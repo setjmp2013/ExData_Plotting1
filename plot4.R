@@ -97,17 +97,22 @@ plot2 <- function(data) {
 ## plot3() - 
 ##
 plot3 <- function(data) {
-        
+        plot(data$Voltage,type="n",xaxt="n",xlab="datetime",ylab="Voltage")
 }
 
+## plot4() -
+##
+plot4 <- function(data) {
+        plot(data$Voltage,type="n",xaxt="n",xlab="datetime",ylab="Global_reactive_power")
+}
 ## plotAll() - Create and do all the graphs.
 plotAll <- function(data) {
         par(mfcol = c(2,2),bg="transparent")
         plot1(data)
         plot2(data)
-        plot1(data)
-        plot2(data)
-
+        plot3(data)
+        plot4(data)
+        
         dev.copy(png, "plot4.png")
         dev.off()
 }
