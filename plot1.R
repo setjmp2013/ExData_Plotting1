@@ -1,4 +1,3 @@
-
 ## getCleanDataset() - Get the dataset from the file and strip it down to
 ## the required date range only.
 getCleanDataset <- function() {
@@ -37,6 +36,7 @@ getCleanDataset <- function() {
 ##
 ##      data - Dataset to Plot With
 plot1 <- function(data) {
+        png("plot1.png",width=504, height=504)
         par(bg="transparent")
         hist(
                 data$Global_active_power,
@@ -44,10 +44,5 @@ plot1 <- function(data) {
                 xlab="Global Active Power (kilowatts)",
                 col="red")
         
-        dev.copy(png, file="plot1.png")
         dev.off()
 }
-
-## Main
-data <- getCleanDataset() #fetch data
-plot1(data) #plot it and save the output file.

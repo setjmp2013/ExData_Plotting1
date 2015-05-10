@@ -1,4 +1,3 @@
-
 ## getCleanDataset() - Get the dataset from the file and strip it down to
 ## the required date range only.
 getCleanDataset <- function() {
@@ -38,13 +37,12 @@ getCleanDataset <- function() {
 ##      data - Dataset to Plot With
 plot1 <- function(data) {
         nrows <- nrow(data)
-        
-        par(bg="transparent")
+
         plot(
                 data$Global_active_power,
                 type="n",
                 xlab="",
-                ylab="Global Active Power (killowatts)",
+                ylab="Global Active Power",
                 axes=TRUE,
                 xaxt="n")
         
@@ -67,7 +65,6 @@ plot2 <- function(data) {
         miny<-min(
                 c(data$Sub_metering_1, data$Sub_metering_2, data$Sub_metering_3))
         
-        par(bg="transparent")
         plot(
                 x=c(0,nrows),y=c(miny,maxy),
                 type="n",
@@ -89,9 +86,9 @@ plot2 <- function(data) {
                 "topright",
                 legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
                 lty=c(1,1,1),
-                lwd=c(1,1,1),
+                lwd=c(0,0,0),
+                bty="n",
                 col=c("black","red","blue"))
-        
 }
 
 ## plot3() - 
@@ -137,12 +134,12 @@ plot4 <- function(data) {
 
 ## plotAll() - Create and do all the graphs.
 plotAll <- function(data) {
-        par(mfcol = c(2,2),bg="transparent")
+        png("plot4.png", width=504, height=504)
+        par(mfcol = c(2,2), bg="transparent")
         plot1(data)
         plot2(data)
         plot3(data)
         plot4(data)
         
-        dev.copy(png, "plot4.png")
         dev.off()
 }

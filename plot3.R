@@ -1,4 +1,3 @@
-
 ## getCleanDataset() - Get the dataset from the file and strip it down to
 ## the required date range only.
 getCleanDataset <- function() {
@@ -43,6 +42,7 @@ plot3 <- function(data) {
         miny<-min(
                 c(data$Sub_metering_1, data$Sub_metering_2, data$Sub_metering_3))
         
+        png("plot3.png", width=504, height=504)
         par(bg="transparent")
         plot(
                 x=c(0,nrows),y=c(miny,maxy),
@@ -68,6 +68,5 @@ plot3 <- function(data) {
                 lwd=c(1,1,1),
                 col=c("black","red","blue"))
         
-        dev.copy(png, "plot3.png")
         dev.off()
 }

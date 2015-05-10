@@ -1,4 +1,3 @@
-
 ## getCleanDataset() - Get the dataset from the file and strip it down to
 ## the required date range only.
 getCleanDataset <- function() {
@@ -38,7 +37,8 @@ getCleanDataset <- function() {
 ##      data - Dataset to Plot With
 plot2 <- function(data) {
         nrows <- nrow(data)
-        
+
+        png("plot2.png",width=504,height=504)
         par(bg="transparent")
         plot(
                 data$Global_active_power,
@@ -54,6 +54,5 @@ plot2 <- function(data) {
                 labels=c("Thu","Fri","Sat"))
         
         lines(data$Global_active_power, col="black")
-        dev.copy(png, "plot2.png")
         dev.off()
 }
